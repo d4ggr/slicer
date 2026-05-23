@@ -1,21 +1,22 @@
-
+build/
 *.o
 *.a
 *.so
 *.exe
 *.out
+*.gch
 
-
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-
+# System
 .DS_Store
 Thumbs.db
 
-
+# Temporary files
 *.tmp
 *.log
