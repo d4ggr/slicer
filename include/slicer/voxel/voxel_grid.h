@@ -52,5 +52,6 @@ bool voxel_grid_triangle_overlaps_voxel(VoxelGrid_t* grid, const Vec3_t* v0, con
 float voxel_grid_get_fill_percentage(VoxelGrid_t* grid);
 uint32_t voxel_grid_count_filled(VoxelGrid_t* grid);
 slicer_status_t voxel_grid_validate(VoxelGrid_t* grid);
+slicer_status_t voxel_grid_export_ply(const VoxelGrid_t* grid, const char* path);
 
 #endif /* SLICER_VOXEL_GRID_H */

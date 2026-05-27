@@ -370,4 +370,49 @@ float voxel_grid_get_fill_percentage(VoxelGrid_t* grid) {
   return percentage;
 }
 
+slicer_status_t voxel_grid_export_ply(const VoxelGrid_t* grid, const char* path) {
+  
+  if (grid == NULL || grid->data == NULL || path == NULL) {
+    return SLICER_STATUS_INVALID_ARG;
+  }
+  
+  size_t total = (size_t)grid->width * (size_t)grid->height * (size_t)grid->depth;
+  uint32_t filled = 0;
+  
+  for (size_t i = 0; i < total; i++) {
+    if (grid->data[i].state != 0) {
+      filled++;
+    }
+  }
+  
+  FILE* file = fopen(path, "w");
+  if (file == NULL) {
+    return SLICER_STATUS_IO_ERROR;
+  }
+  
+  fprintf(file, "ply\n");
+  fprintf(file, "format ascii 1.0\n");
+  fprintf(file, "element vertex %u\n", filled);
+  fprintf(file, "property float x\n");
+  fprintf(file, "property float y\n");
+  fprintf(file, "property float z\n");
+  fprintf(file, "end_header\n");
+  
+  for (uint32_t z = 0; z < grid->depth; z++) {
+    for (uint32_t y = 0; y < grid->height; y++) {
+      for (uint32_t x = 0; x < grid->width; x++) {
+        uint32_t i = x + (y * grid->width) + (z * grid->width * grid->height);
+        if (grid->data[i].state != 0) {
+          float wx = grid->origin.x + ((float)x + 0.5f) * grid->cell_size;
+          float wy = grid->origin.y + ((float)y + 0.5f) * grid->cell_size;
+          float wz = grid->origin.z + ((float)z + 0.5f) * grid->cell_size;
+          fprintf(file, "%.6f %.6f %.6f\n", wx, wy, wz);
+        }
+      }
+    }
+  }
+  
+  fclose(file);
+  return SLICER_STATUS_OK;
+}
 
