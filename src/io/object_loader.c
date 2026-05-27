@@ -49,6 +49,9 @@ else if(strcmp(token[0],"f")==0 && count>=4){
 }
 parser_free(&parser);
 
+if (mesh_vertex_count(&mesh) > 0) {
+	mesh_compute_bounds(&mesh);
+}
 
 return mesh;
 
