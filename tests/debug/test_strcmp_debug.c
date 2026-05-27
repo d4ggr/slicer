@@ -7,7 +7,7 @@
 
 int main() {
 uint32_t size = 0;
-char* buffer = file_read_all("tests/test_model.obj", &size);
+char* buffer = file_read_all("tests/data/test_model.obj", &size);
 
 Parser_t parser = parser_create(buffer, size);
 ParserLine_t line = parser_next_line(&parser);

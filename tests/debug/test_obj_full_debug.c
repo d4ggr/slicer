@@ -8,7 +8,7 @@ printf("=== Full OBJ Load Debug ===\n\n");
 
 // Manually load to debug
 uint32_t size = 0;
-char* buffer = file_read_all("tests/test_model.obj", &size);
+char* buffer = file_read_all("tests/data/test_model.obj", &size);
 
 if (buffer == NULL) {
 printf("ERROR: File not read!\n");

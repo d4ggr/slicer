@@ -8,7 +8,7 @@ printf("=== OBJ Loader Debug ===\n\n");
 
 // Test file reading
 uint32_t size = 0;
-char* buffer = file_read_all("tests/test_model.obj", &size);
+char* buffer = file_read_all("tests/data/test_model.obj", &size);
 
 if (buffer == NULL) {
 printf("ERROR: Could not read file!\n");

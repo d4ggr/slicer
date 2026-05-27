@@ -6,7 +6,7 @@ int main() {
 	
 	// Load test model
 	printf("Loading test_model.obj...\n");
-	Mesh_t mesh = obj_load("tests/test_model.obj");
+	Mesh_t mesh = obj_load("tests/data/test_model.obj");
 	
 	// Check result
 	uint32_t vert_count = mesh_vertex_count(&mesh);

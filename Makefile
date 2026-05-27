@@ -19,14 +19,21 @@ build:
 	$(CC) $(CFLAGS) -c src/io/parser.c -o build/parser.o
 	$(CC) $(CFLAGS) -c src/io/object_loader.c -o build/object_loader.o
 	@echo "Stage 2 (file.c, parser.c, object_loader.c) build complete! Object files in build/"
+	@echo "Building Stage 3-4 (Voxelization + Repair)..."
+	$(CC) $(CFLAGS) -c src/voxel/voxel_grid.c -o build/voxel_grid.o
+	$(CC) $(CFLAGS) -c src/voxel/voxel_repair.c -o build/voxel_repair.o
+	@echo "Stage 3-4 build complete! Object files in build/"
 
 test: build
 	@echo ""
 	@echo "Building test program..."
-	$(CC) $(CFLAGS) tests/test_obj_loader.c build/*.o -o build/test_obj_loader -lm
+	$(CC) $(CFLAGS) tests/unit/test_obj_loader.c build/*.o -o build/test_obj_loader -lm
+	$(CC) $(CFLAGS) tests/unit/test_voxel_repair.c build/*.o -o build/test_voxel_repair -lm
+	$(CC) $(CFLAGS) tests/integration/test_obj_voxel_repair.c build/*.o -o build/test_obj_voxel_repair -lm
 	@echo "Running tests..."
 	@./build/test_obj_loader
+	@./build/test_voxel_repair
+	@./build/test_obj_voxel_repair
 
 clean:
 	rm -rf build/*
-
