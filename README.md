@@ -1,6 +1,6 @@
 # Slicer
 
-> Voxel-based 3D mesh slicer project scaffold in C. Converts triangle mesh models to discrete voxel grids for 3D printing workflows.
+> A voxel-based 3D mesh slicer written in C. Converts triangle mesh models to discrete voxel grids for 3D printing workflows.
 
 ## Features
 
@@ -28,11 +28,11 @@ make build
 
 | # | Stage | Description | Status |
 |----|-------|-------------|--------|
-| 1 | Core | Types, error handling, math utilities | [x] Complete |
-| 2 | Mesh | OBJ parsing, mesh loading, validation | [x] Complete |
-| 3 | Voxel | Voxelization engine, grid operations | [x] Complete |
-| 4 | Repair | Hole filling, flood fill, connectivity | [ ] Active |
-| 5 | Output | Layer slicing, G-code generation | [ ] Planned |
+| 1 | Core | Types, error handling, math utilities | Complete |
+| 2 | Mesh | OBJ parsing, mesh loading, validation | Complete |
+| 3 | Voxel | Voxelization engine, grid operations | Complete |
+| 4 | Repair | Hole filling, flood fill, connectivity | Complete |
+| 5 | Output | Layer slicing, G-code generation | Planned |
 
 ## Project Structure
 
